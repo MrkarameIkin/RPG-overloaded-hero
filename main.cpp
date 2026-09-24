@@ -56,7 +56,7 @@ void createHero(Hero &player) {
     player.maxWeight = stof(input);
 }
 
-float inventoryWeight(Hero &player)
+float inventoryWeight(const Hero &player)
 {
     float weight = 0.0f;
 
@@ -67,7 +67,7 @@ float inventoryWeight(Hero &player)
     return weight;
 }
 
-int inventoryValue(Hero &player)
+int inventoryValue(const Hero &player)
 {
     int value = 0;
 
@@ -81,7 +81,6 @@ int inventoryValue(Hero &player)
 void addItem(Hero &player) {
     Item newItem;
     std::string buffer;
-    float weight;
 
     std::cout << "\nВы нашли предмет! Опишите его...\n";
     std::cout << "\nНазвание предмета: ";
@@ -109,13 +108,13 @@ void addItem(Hero &player) {
     }
 }
 
-std::string heroClassOutput(Hero &player) {
+std::string heroClassOutput(const Hero &player) {
     if(player.heroClass == HeroClass::Warrior) return "Воин";
     else if(player.heroClass == HeroClass::Mage) return "Маг";
     else if(player.heroClass == HeroClass::Rogue) return "Разбойник";
 }
 
-void printHeroStats(Hero &player) {
+void printHeroStats(const Hero &player) {
     std::cout << "\n--- СТАТУС ГЕРОЯ ---\n";
     std::cout << "Герой: " << player.name << " (" << heroClassOutput(player) << "), Уровень: " << player.level << '\n';
     std::cout << "Вес: " << inventoryWeight(player) << " / " << player.maxWeight << " кг\n";
